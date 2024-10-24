@@ -1,0 +1,24 @@
+int sensorValue= 0;
+int led=7;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  pinMode(led, OUTPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  sensorValue=analogRead(A0);
+  Serial.println(sensorValue);
+  analogWrite(7,map(sensorValue , 0, 1023,0,255));  //command to hget the values in multimeter
+  if(sensorValue>=500){
+    digitalWrite(6,HIGH);
+      delay(10);
+    digitalWrite(6,LOW);
+      delay(10);
+  }
+  delay(100);
+}
